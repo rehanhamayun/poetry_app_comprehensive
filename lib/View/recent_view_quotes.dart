@@ -10,6 +10,10 @@ class RecentQuotes extends StatelessWidget {
   Widget build(BuildContext context) {
     final recent = Provider.of<RecentQuotesSaver>(context);
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.black87,
+        title: Text("Recent Quotes"),
+      ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

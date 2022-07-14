@@ -1,9 +1,11 @@
 import 'dart:convert';
 
+import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 import 'package:shakespear_app/Models/poetry_model.dart';
+import 'package:shakespear_app/Provider_Controllers/favorite_quote_provider.dart';
 import 'package:shakespear_app/Provider_Controllers/provider_saver.dart';
 import 'package:shakespear_app/Provider_Controllers/recent_quotes_provider.dart';
 import 'package:shakespear_app/View/drawer.dart';
@@ -34,6 +36,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final lister = Provider.of<ShowLines>(context);
     final recent = Provider.of<RecentQuotesSaver>(context);
+    final favorite = Provider.of<FavoriteQuoteSaver>(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black87,
@@ -102,6 +105,20 @@ class HomePage extends StatelessWidget {
                                           ],
                                         ),
                                       ),
+                                    ),
+                                  ),
+                                  InkWell(
+                                    onTap: () {
+                                      favorite.addFavoriteQuote(
+                                          poetryList[index].title.toString());
+                                    },
+                                    child: Container(
+                                      height: 50,
+                                      width: 50,
+                                      child: FavoriteButton(
+                                          valueChanged: (_isChanged) {
+                                        _isChanged = true;
+                                      }),
                                     ),
                                   ),
                                 ],

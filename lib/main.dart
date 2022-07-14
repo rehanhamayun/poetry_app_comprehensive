@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shakespear_app/Provider_Controllers/favorite_quote_provider.dart';
 import 'package:shakespear_app/Provider_Controllers/provider_saver.dart';
 import 'package:shakespear_app/Provider_Controllers/recent_quotes_provider.dart';
 import 'package:shakespear_app/View/home_page.dart';
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
         providers: [
           ChangeNotifierProvider(create: (_) => ShowLines()),
           ChangeNotifierProvider(create: (_) => RecentQuotesSaver()),
+          ChangeNotifierProvider(create: (_) => FavoriteQuoteSaver()),
         ],
         child: Builder(builder: (BuildContext context) {
           return MaterialApp(
