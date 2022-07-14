@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shakespear_app/Provider_Controllers/provider_saver.dart';
+import 'package:shakespear_app/Provider_Controllers/recent_quotes_provider.dart';
 import 'package:shakespear_app/View/home_page.dart';
-import 'package:shakespear_app/View/poetry_max.dart';
+import 'package:shakespear_app/View/recent_view_quotes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
         providers: [
           ChangeNotifierProvider(create: (_) => ShowLines()),
+          ChangeNotifierProvider(create: (_) => RecentQuotesSaver()),
         ],
         child: Builder(builder: (BuildContext context) {
           return MaterialApp(
