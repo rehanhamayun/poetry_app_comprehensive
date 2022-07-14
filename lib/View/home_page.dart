@@ -11,12 +11,17 @@ import 'package:shakespear_app/Provider_Controllers/recent_quotes_provider.dart'
 import 'package:shakespear_app/View/drawer.dart';
 import 'package:shakespear_app/View/poetry_max.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
 // API CALL USING MODEL
-//MODEL CREATED IN MODEL FOLDER OF THAT API
   List<ShakeModel> poetryList = [];
+
   Future<List<ShakeModel>> getPoetryApi() async {
     final response = await http
         .get(Uri.parse("https://poetrydb.org/author,title/Shakespeare;Sonnet"));
@@ -37,6 +42,7 @@ class HomePage extends StatelessWidget {
     final lister = Provider.of<ShowLines>(context);
     final recent = Provider.of<RecentQuotesSaver>(context);
     final favorite = Provider.of<FavoriteQuoteSaver>(context);
+    bool _changeColor = false;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black87,
@@ -107,20 +113,28 @@ class HomePage extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  InkWell(
-                                    onTap: () {
-                                      favorite.addFavoriteQuote(
-                                          poetryList[index].title.toString());
-                                    },
-                                    child: Container(
-                                      height: 50,
-                                      width: 50,
-                                      child: FavoriteButton(
-                                          valueChanged: (_isChanged) {
-                                        _isChanged = true;
-                                      }),
+                                   // Container need to add here
+
+                                InkWell(
+                                  onTap: (){
+
+                                    favorite.addFavoriteQuote(poetryList[index].title.toString());
+                                    setState(() {
+                                      _changeColor = true;
+                                    });
+                                  },
+                                  child: Container(
+                                    height: 40,
+                                    width: 40,
+                                    decoration: BoxDecoration(
+                                      color:  _changeColor==true ? Colors.amber : Colors.black,
+                                      borderRadius: BorderRadius.circular(10
+                                      ),
                                     ),
                                   ),
+                                ),
+
+
                                 ],
                               ),
                             ],

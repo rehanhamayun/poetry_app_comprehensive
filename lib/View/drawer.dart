@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:shakespear_app/Provider_Controllers/favorite_quote_provider.dart';
 import 'package:shakespear_app/Provider_Controllers/provider_saver.dart';
 import 'package:shakespear_app/View/extras.dart';
+import 'package:shakespear_app/View/favorite_quotes.dart';
 import 'package:shakespear_app/View/recent_view_quotes.dart';
 
 class MyDrawer extends StatelessWidget {
@@ -11,7 +12,8 @@ class MyDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final lister = Provider.of<ShowLines>(context);
-    final favorite = Provider.of<FavoriteQuoteSaver>(context);
+    final adder = Provider.of<FavoriteQuoteSaver>(context);
+    bool _changer = false;
     return Drawer(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -66,11 +68,14 @@ class MyDrawer extends StatelessWidget {
           SizedBox(
             height: 40,
           ),
-          Text(favorite.favoriteQuote.length.toString()),
+          Text(adder.favoriteQuote.length.toString()),
+          SizedBox(
+            height: 40,
+          ),
           GestureDetector(
             onTap: () {
-              //   Navigator.push(context,
-              //     MaterialPageRoute(builder: (context) => RecentQuotes()));
+                Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => FavoriteQuotes()));
             },
             child: Container(
               height: 50,
