@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shakespear_app/Login_routes/auth_services.dart';
 import 'package:shakespear_app/Provider_Controllers/favorite_quote_provider.dart';
 import 'package:shakespear_app/Provider_Controllers/provider_saver.dart';
 import 'package:shakespear_app/View/extras.dart';
@@ -13,6 +14,7 @@ class MyDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     final lister = Provider.of<ShowLines>(context);
     final adder = Provider.of<FavoriteQuoteSaver>(context);
+    final authService = Provider.of<AuthService>(context);
     bool _changer = false;
     return Drawer(
       child: Column(
@@ -96,8 +98,32 @@ class MyDrawer extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 150,
+            height: 50,
           ),
+          GestureDetector(
+            onTap: () {
+              authService.signOut();
+
+            },
+            child: Container(
+              height: 30,
+              width: 100,
+              decoration: BoxDecoration(
+                color: Colors.black87,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Center(
+                child: Text(
+                  "Log Out",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          SizedBox(height: 30,),
           Text(
             "ShakeSpear Quotes.\nAll rights reserved @2022.",
             style: TextStyle(

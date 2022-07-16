@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
@@ -113,28 +112,27 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                     ),
                                   ),
-                                   // Container need to add here
+                                  // Container need to add here
 
-                                InkWell(
-                                  onTap: (){
-
-                                    favorite.addFavoriteQuote(poetryList[index].title.toString());
-                                    setState(() {
-                                      _changeColor = true;
-                                    });
-                                  },
-                                  child: Container(
-                                    height: 40,
-                                    width: 40,
-                                    decoration: BoxDecoration(
-                                      color:  _changeColor==true ? Colors.amber : Colors.black,
-                                      borderRadius: BorderRadius.circular(10
+                                  InkWell(
+                                    onTap: () {
+                                      favorite.addFavoriteQuote(
+                                          poetryList[index].title.toString());
+                                      setState(() {
+                                        _changeColor = true;
+                                      });
+                                    },
+                                    child: Container(
+                                      height: 40,
+                                      width: 40,
+                                      decoration: BoxDecoration(
+                                        color: _changeColor == true
+                                            ? Colors.amber
+                                            : Colors.black,
+                                        borderRadius: BorderRadius.circular(10),
                                       ),
                                     ),
                                   ),
-                                ),
-
-
                                 ],
                               ),
                             ],

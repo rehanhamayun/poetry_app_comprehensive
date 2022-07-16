@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "545131117284",
+    "project_id": "provider-3166e",
+    "storage_bucket": "provider-3166e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:545131117284:android:b01379b254991494d9caf1",
+        "android_client_info": {
+          "package_name": "com.example.shakespear_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "545131117284-qtalvt1tbrkbh50as65nteevgm6d59ts.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1Rx7RTHIj8AOo7ZwbXCKYDeZdm2rr-8M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "545131117284-qtalvt1tbrkbh50as65nteevgm6d59ts.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "545131117284-r5e8m8tp1srs8cs8pgq8asvqosv7d3cf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.shakespearApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
