@@ -2,7 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shakespear_app/Login_routes/auth_services.dart';
-import 'package:shakespear_app/Login_routes/home_screen.dart';
+
 import 'package:shakespear_app/Login_routes/login.dart';
 import 'package:shakespear_app/Login_routes/register.dart';
 import 'package:shakespear_app/Login_routes/wrapper.dart';
@@ -27,9 +27,8 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(create: (_) => ShowLines()),
           ChangeNotifierProvider(create: (_) => RecentQuotesSaver()),
           ChangeNotifierProvider(create: (_) => FavoriteQuoteSaver()),
-          Provider(create: (_)=> AuthService()),
+          Provider(create: (_) => AuthService()),
         ],
-
         child: Builder(builder: (BuildContext context) {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
