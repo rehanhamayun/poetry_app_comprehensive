@@ -13,7 +13,7 @@ class FavoriteQuotes extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black87,
-        title: Text("Recent Quotes"),
+        title: Text("Saved Quotes"),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,

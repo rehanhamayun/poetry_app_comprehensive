@@ -1,6 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:shakespear_app/Login_routes/auth_services.dart';
+import 'package:shakespear_app/Login_routes/login.dart';
 import 'package:shakespear_app/Provider_Controllers/favorite_quote_provider.dart';
 import 'package:shakespear_app/Provider_Controllers/provider_saver.dart';
 import 'package:shakespear_app/View/extras.dart';
@@ -15,123 +18,100 @@ class MyDrawer extends StatelessWidget {
     final lister = Provider.of<ShowLines>(context);
     final adder = Provider.of<FavoriteQuoteSaver>(context);
     final authService = Provider.of<AuthService>(context);
-    bool _changer = false;
-    return Drawer(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          SizedBox(
-            height: 100,
-          ),
-          Text(
-            "Recent View Quotes",
-            style: textHead,
-          ),
-          SizedBox(
-            height: 40,
-          ),
-          Text(
-            lister.savedLines.length.toString(),
-            style: textHeadQ,
-          ),
-          SizedBox(
-            height: 40,
-          ),
-          GestureDetector(
-            onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => RecentQuotes()));
-            },
-            child: Container(
-              height: 50,
-              width: 150,
-              decoration: BoxDecoration(
-                color: Colors.black87,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Center(
-                child: Text(
-                  "Proceed",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                  ),
-                ),
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 150,
-          ),
-          Text(
-            "Favorite Quotes",
-            style: textHead,
-          ),
-          SizedBox(
-            height: 40,
-          ),
-          Text(adder.favoriteQuote.length.toString()),
-          SizedBox(
-            height: 40,
-          ),
-          GestureDetector(
-            onTap: () {
-                Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => FavoriteQuotes()));
-            },
-            child: Container(
-              height: 50,
-              width: 150,
-              decoration: BoxDecoration(
-                color: Colors.black87,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Center(
-                child: Text(
-                  "Proceed",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                  ),
-                ),
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 50,
-          ),
-          GestureDetector(
-            onTap: () {
-              authService.signOut();
 
-            },
-            child: Container(
-              height: 30,
-              width: 100,
-              decoration: BoxDecoration(
-                color: Colors.black87,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Center(
-                child: Text(
-                  "Log Out",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                  ),
+    return Drawer(
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(45,150,45,0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Row(
+              //mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Icon(CupertinoIcons.profile_circled, ),
+                SizedBox(width: 10,),
+
+                Text("My Profile", style: GoogleFonts.poppins(
+                  color: Colors.black.withOpacity(0.8),
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
                 ),
+                 ),
+
+                //
+
+              ],
+            ),
+
+            SizedBox(height: 50,),
+
+
+
+            GestureDetector(
+              onTap: (){
+               Navigator.push(context, MaterialPageRoute(builder: (context)=> FavoriteQuotes()));
+              },
+              child: Row(
+                // mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Icon(CupertinoIcons.square_favorites, ),
+                  SizedBox(width: 10,),
+
+                  Text("Saved Quotes", style: GoogleFonts.poppins(
+                    color: Colors.black.withOpacity(0.8),
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                  ), ),
+
+                  //
+
+                ],
               ),
             ),
-          ),
-          SizedBox(height: 30,),
-          Text(
-            "ShakeSpear Quotes.\nAll rights reserved @2022.",
-            style: TextStyle(
-                color: Colors.grey.withOpacity(0.7),
-                fontSize: 14,
-                fontWeight: FontWeight.w400),
-          )
-        ],
+
+
+            SizedBox(height: 50,),
+
+
+            Row(
+              //mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Icon(CupertinoIcons.search, ),
+                SizedBox(width: 10,),
+
+                Text("Search", style: GoogleFonts.poppins(
+                  color: Colors.black.withOpacity(0.8),
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                ), ),
+
+                //
+
+              ],
+            ),
+
+            SizedBox(height: 200,),
+
+            GestureDetector(
+              onTap: (){
+                authService.signOut();
+                Navigator.push(context, MaterialPageRoute(builder: (context)=> Login()));
+              },
+              child: Row(
+                children: [
+                  Icon(Icons.logout),
+                  SizedBox(width: 10,),
+                  Text("Logout",  style: GoogleFonts.poppins(
+                    color: Colors.black.withOpacity(0.8),
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                  ),),
+                ],
+              ),
+            ),
+
+          ],
+        ),
       ),
     );
   }
