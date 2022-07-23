@@ -15,3 +15,6 @@ final textHeadQ = GoogleFonts.poppins(
 );
 
 final colorMain = Color(0xFF10d0d6);
+
+final unlikeIcon = Icon(Icons.favorite_border_outlined, color: Colors.black.withOpacity(0.4), size: 18,);
+final likeIcon = Icon(Icons.favorite, color: Colors.red.withOpacity(0.8), size: 18,);

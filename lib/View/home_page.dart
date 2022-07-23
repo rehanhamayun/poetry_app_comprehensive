@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:ffi';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,8 @@ import 'package:shakespear_app/Provider_Controllers/provider_saver.dart';
 import 'package:shakespear_app/Provider_Controllers/recent_quotes_provider.dart';
 import 'package:shakespear_app/View/drawer.dart';
 import 'package:shakespear_app/View/poetry_max.dart';
+import 'package:shakespear_app/configs/configs.dart';
+import 'package:sizer/sizer.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -98,94 +101,57 @@ class _HomePageState extends State<HomePage> {
                       color: Colors.black,
                     ));
               } else {
-
-
                 return Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.only(top:100.0),
-                    child: ListView.builder(
-                        scrollDirection: Axis.vertical,
-                        itemCount: poetryList.length,
-                        itemBuilder: (BuildContext context, int index) {
+                    child: ListView.builder(itemCount: poetryList.length,
+                        itemBuilder: (context, index) {
                           return Padding(
-                            padding: const EdgeInsets.fromLTRB(20,20,20,20),
+                            padding: const EdgeInsets.all(20.0),
+                            child: Container(
+                              height: 15.h,
+                              width: 50.w,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
 
-                              child: Card(
-                                elevation: 0.0,
-
-
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-
-                                  children: [
-                                    Row(
-                                      children: [
-                                        InkWell(
-                                          onTap: () {
-                                            // recent.addRecentQuote(
-                                            //    poetryList[index].title.toString());
-                                            //HERE WE COME THE MAIN LOGIC
-
-                                            // WE CREATE PROVIDER LOGIC TO SAVED THE LINES OF PARTICULAR TITLE.
-                                            //  PROVIDER SHOWLINES IS THE LOGIC WE CREATE TO STORE INFO OF PARTICULAR TITLE.
-                                            // WE SAVED LINES OF PARTICULAR TITLE USER CLICKS AND ALSO NAVIGATE DIRECTLY SO 2 BENEFITS ADDED
-                                            lister.addLinesToSaved(
-                                                poetryList[index].lines.toString());
-
-                                            // Navigator.push(
-                                            //    context,
-                                            //   MaterialPageRoute(
-                                            //      builder: (context) =>
-                                            //         PoetryMax()));
-                                          },
-                                          child: Container(
-                                            height: 150,
-                                            width: 300,
-                                            child: SingleChildScrollView(
-                                              child: Column(
-                                                children: [
-                                                  Text(
-                                                    poetryList[index]
-                                                        .title
-                                                        .toString().replaceAll("Sonnet", ""),
-                                                    style: TextStyle(
-                                                      color: Colors.black,
-                                                      fontSize: 16,
-                                                      fontWeight: FontWeight.bold,
-                                                      fontStyle: FontStyle.italic,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        // Container need to add here
-
-                                        InkWell(
-                                          onTap: () {
-                                            favorite.addFavoriteQuote(
-                                                poetryList[index].title.toString());
-
-                                          },
-                                          child: Icon(CupertinoIcons.square_favorites),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
+                                borderRadius: BorderRadius.circular(25),
                               ),
 
+                              // SubString method to remove first few digits from the fetch data
+                              //It removes first 9 digits of fetch data in List String.
+                              child: Column(
+                                // main
+                                children: [
+                                  Container(
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.fromLTRB(0,5,18,0),
+                                          child: GestureDetector(
+                                            onTap: (){
+
+                                              favorite.addFavoriteQuote(poetryList[index].title.toString());
+                                            },
+                                            child: Container(
+
+            // Favorite Button Logic added.
+                                                child:  favorite.favoriteQuote.contains(poetryList[index].title) ? likeIcon : unlikeIcon  ),
+                                          ),
+                                        ),
+                                        ],
+                                    ),
+                                  ),
+                                  //Text(poetryList[index].title.toString().substring(9)),
+                                ],
+                              ),
+                            ),
                           );
-                        }),
-                  ),
-                );
+                        }
+                    ));
               }
-            },
-          ),
-          // ElevatedButton(onPressed: () {}, child: Text("=>"))
-        ],
+
+
+              // ElevatedButton(onPressed: () {}, child: Text("=>"))
+            })],
       ),
       drawer: MyDrawer(),
     );
