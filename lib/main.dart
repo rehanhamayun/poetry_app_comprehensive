@@ -9,6 +9,7 @@ import 'package:shakespear_app/Login_routes/wrapper.dart';
 import 'package:shakespear_app/Provider_Controllers/favorite_quote_provider.dart';
 import 'package:shakespear_app/Provider_Controllers/provider_saver.dart';
 import 'package:shakespear_app/Provider_Controllers/recent_quotes_provider.dart';
+import 'package:shakespear_app/View/splash_screen.dart';
 import 'package:sizer/sizer.dart';
 
 void main() async {
@@ -48,11 +49,12 @@ class MyApp extends StatelessWidget {
                   // is not restarted.
                   primarySwatch: Colors.blue,
                 ),
-                initialRoute: '/login',
+                initialRoute: '/splash',
                 routes: {
                   '/': (context) => Wrapper(),
                   '/login': (context) => Login(),
                   '/register': (context) => Register(),
+                  '/splash' : (context) => SplashScreen(),
                 },
               );
             },
