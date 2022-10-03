@@ -19,7 +19,7 @@ class HomeScreen extends StatelessWidget {
                 authService.signOut();
 
               },
-              child: Text("Logout"),
+              child: const Text("Logout"),
             ),
           ),
         ],

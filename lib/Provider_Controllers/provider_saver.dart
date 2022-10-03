@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 // WE CREATE AN EMPTY LIST AND STORE ALL DATA HERE OF ONTAP OF USER.
 // AFTER ALL, ITS ALL ABOUT INDEXES
 class ShowLines with ChangeNotifier {
-  List<String> _savedLines = [];
+  final List<String> _savedLines = [];
 
   List<String> get savedLines => _savedLines;
 

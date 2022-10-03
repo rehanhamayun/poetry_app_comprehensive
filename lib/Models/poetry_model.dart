@@ -14,11 +14,11 @@ class ShakeModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['title'] = this.title;
-    data['author'] = this.author;
-    data['lines'] = this.lines;
-    data['linecount'] = this.linecount;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['title'] = title;
+    data['author'] = author;
+    data['lines'] = lines;
+    data['linecount'] = linecount;
     return data;
   }
 }

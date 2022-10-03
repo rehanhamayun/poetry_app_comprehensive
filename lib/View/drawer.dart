@@ -6,9 +6,8 @@ import 'package:shakespear_app/Login_routes/auth_services.dart';
 import 'package:shakespear_app/Login_routes/login.dart';
 import 'package:shakespear_app/Provider_Controllers/favorite_quote_provider.dart';
 import 'package:shakespear_app/Provider_Controllers/provider_saver.dart';
-import 'package:shakespear_app/View/extras.dart';
 import 'package:shakespear_app/View/favorite_quotes.dart';
-import 'package:shakespear_app/View/recent_view_quotes.dart';
+import 'package:shakespear_app/View/firebase_database.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({Key? key}) : super(key: key);
@@ -102,6 +101,25 @@ class MyDrawer extends StatelessWidget {
                   Icon(Icons.logout),
                   SizedBox(width: 10,),
                   Text("Logout",  style: GoogleFonts.poppins(
+                    color: Colors.black.withOpacity(0.8),
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                  ),),
+                ],
+              ),
+            ),
+
+            SizedBox(height: 20,),
+            GestureDetector(
+              onTap: (){
+
+                Navigator.push(context, MaterialPageRoute(builder: (context)=> Test()));
+              },
+              child: Row(
+                children: [
+                  Icon(Icons.logout),
+                  SizedBox(width: 10,),
+                  Text("Board Screen",  style: GoogleFonts.poppins(
                     color: Colors.black.withOpacity(0.8),
                     fontSize: 18,
                     fontWeight: FontWeight.w600,

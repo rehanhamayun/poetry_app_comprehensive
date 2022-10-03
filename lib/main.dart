@@ -2,13 +2,13 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shakespear_app/Login_routes/auth_services.dart';
-
 import 'package:shakespear_app/Login_routes/login.dart';
 import 'package:shakespear_app/Login_routes/register.dart';
 import 'package:shakespear_app/Login_routes/wrapper.dart';
 import 'package:shakespear_app/Provider_Controllers/favorite_quote_provider.dart';
 import 'package:shakespear_app/Provider_Controllers/provider_saver.dart';
 import 'package:shakespear_app/Provider_Controllers/recent_quotes_provider.dart';
+import 'package:shakespear_app/View/firebase_database.dart';
 import 'package:shakespear_app/View/splash_screen.dart';
 import 'package:sizer/sizer.dart';
 
@@ -55,6 +55,7 @@ class MyApp extends StatelessWidget {
                   '/login': (context) => Login(),
                   '/register': (context) => Register(),
                   '/splash' : (context) => SplashScreen(),
+                  '/board' : (context)=> Test(),
                 },
               );
             },

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:shakespear_app/Provider_Controllers/favorite_quote_provider.dart';
-import 'package:shakespear_app/configs/configs.dart';
 import 'package:sizer/sizer.dart';
 
 

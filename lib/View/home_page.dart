@@ -15,7 +15,7 @@ import 'package:shakespear_app/configs/configs.dart';
 import 'package:sizer/sizer.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({Key? key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -39,6 +39,8 @@ class _HomePageState extends State<HomePage> {
       return poetryList;
     }
   }
+
+
 
   @override
   Widget build(BuildContext context) {

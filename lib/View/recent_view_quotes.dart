@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import 'package:shakespear_app/Provider_Controllers/recent_quotes_provider.dart';
 
 class RecentQuotes extends StatelessWidget {
