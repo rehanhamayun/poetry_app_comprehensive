@@ -25,13 +25,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-        providers: [
-          ChangeNotifierProvider(create: (_) => ShowLines()),
-          ChangeNotifierProvider(create: (_) => RecentQuotesSaver()),
-          ChangeNotifierProvider(create: (_) => FavoriteQuoteSaver()),
-          Provider(create: (_) => AuthService()),
-        ],
-        child: Builder(builder: (BuildContext context) {
+      providers: [
+        ChangeNotifierProvider(create: (_) => ShowLines()),
+        ChangeNotifierProvider(create: (_) => RecentQuotesSaver()),
+        ChangeNotifierProvider(create: (_) => FavoriteQuoteSaver()),
+        Provider(create: (_) => AuthService()),
+      ],
+      child: Builder(
+        builder: (BuildContext context) {
           return Sizer(
             builder: (context, orientation, deviceType) {
               return MaterialApp(
@@ -54,12 +55,14 @@ class MyApp extends StatelessWidget {
                   '/': (context) => Wrapper(),
                   '/login': (context) => Login(),
                   '/register': (context) => Register(),
-                  '/splash' : (context) => SplashScreen(),
-                  '/board' : (context)=> Test(),
+                  '/splash': (context) => SplashScreen(),
+                  '/board': (context) => Test(),
                 },
               );
             },
           );
-        }));
+        },
+      ),
+    );
   }
 }
